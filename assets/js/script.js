@@ -14,9 +14,12 @@ let availableQuestions = [];
 let questions = [
   {
     question: "What is JavaScript?",
-    choice1: "A standardised system for tagging text files to achieve font, colour, graphic, and hyperlink effects on webpages.",
-    choice2: "a stylesheet language used to describe the presentation of a document written in HTML.",
-    choice3: "An object-oriented language commonly used to create interactive effects within web browsers.",
+    choice1:
+      "A standardised system for tagging text files to achieve font, colour, graphic, and hyperlink effects on webpages.",
+    choice2:
+      "a stylesheet language used to describe the presentation of a document written in HTML.",
+    choice3:
+      "An object-oriented language commonly used to create interactive effects within web browsers.",
     choice4: "The script belong to a person called Java.",
     answer: 3,
   },
@@ -64,33 +67,33 @@ startGame = () => {
   getNewQuestion();
 };
 
-const startingTime = 1;
+const startingTime = 1.5;
 let time = startingTime * 60;
 
 updateCountdown = () => {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
 
-  seconds = seconds < 1 ? '0' + seconds : seconds;
+  seconds = seconds < 1 ? "0" + seconds : seconds;
 
   countdown.innerHTML = `${minutes}: ${seconds}`;
   time--;
 
   if (time === 0) {
     clearInterval(updateCountdown);
-    alert ("Times up! Restart quiz!");
+    alert("Times up! Restart quiz!");
 
-    return location.href = "index.html";
+    return (location.href = "index.html");
   }
-}
-  
+};
+
 setInterval(updateCountdown, 1000);
 
 getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
 
-  return location.href = "end.html";
+    return (location.href = "end.html");
   }
 
   questionCounter++;
@@ -125,8 +128,8 @@ choices.forEach((choice) => {
     if (classToApply === "correct") {
       incrementScore(SCORE_POINTS);
     } else if (classToApply === "incorrect") {
-      time -= 15
-      alert ("Ouch! There goes 15 seconds!");
+      time -= 15;
+      alert("Ouch! There goes 15 seconds!");
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
