@@ -1,0 +1,74 @@
+body {
+  color: white;
+}
+
+.choice-container {
+  display: flex;
+  margin-bottom: 12px;
+  width: 100%;
+  border-radius: 4px;
+  background: blue;
+  font-size: 48px;
+  min-width: 1280px;
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 6px 22px 0 black 0.5;
+  transition: transform 100ms;
+  transform: scale(1.02);
+}
+
+.choice-prefix {
+  padding: 32px 40px;
+  color: white;
+}
+
+.choice-text {
+  padding: 32px;
+  width: 100%;
+}
+
+.correct {
+  background: linear-gradient(32deg, green, 0%, #028b02 100%);
+}
+
+.incorrect {
+  background: linear-gradient(32deg, red, 0%, #ff1414 1 100%);
+}
+
+/* Heads Up Display (HUD) */
+#hud {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hud-prefix {
+  text-align: center;
+  font-size: 32px;
+}
+
+.hud-main-text {
+  text-align: center;
+}
+
+#progressBar {
+  width: 320px;
+  height: 48px;
+  border: 3px solid green;
+  margin-top: 32px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+#progressBarFull {
+  height: 100%;
+  background: green;
+  width: 0%;
+}
+
+@media screen and (max-width: 768px) {
+  .choice-container {
+    min-width: 640px;
+  }
+}
