@@ -64,15 +64,24 @@ startGame = () => {
   getNewQuestion();
 };
 
-const startingTime = 2;
+const startingTime = 1;
 let time = startingTime * 60;
 
 updateCountdown = () => {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
 
+  seconds = seconds < 1 ? '0' + seconds : seconds;
+
   countdown.innerHTML = `${minutes}: ${seconds}`;
   time--;
+
+  if (time === 0) {
+    clearInterval(updateCountdown);
+    alert ("Times up! Restart quiz!");
+
+    return location.href = "index.html";
+  }
 }
   
 setInterval(updateCountdown, 1000);
@@ -81,7 +90,6 @@ getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
 
-    //return window.location.href("end.html");
   return location.href = "end.html";
   }
 
@@ -116,6 +124,9 @@ choices.forEach((choice) => {
 
     if (classToApply === "correct") {
       incrementScore(SCORE_POINTS);
+    }
+    else (classToApply === "incorrect") {
+      time -15;
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
