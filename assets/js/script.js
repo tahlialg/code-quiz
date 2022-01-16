@@ -124,9 +124,9 @@ choices.forEach((choice) => {
 
     if (classToApply === "correct") {
       incrementScore(SCORE_POINTS);
-    }
-    else (classToApply === "incorrect") {
-      time -15;
+    } else if (classToApply === "incorrect") {
+      time -= 15
+      alert ("Ouch! There goes 15 seconds!");
     }
 
     selectedChoice.parentElement.classList.add(classToApply);
