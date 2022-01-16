@@ -64,8 +64,6 @@ startGame = () => {
   getNewQuestion();
 };
 
-setInterval(updateCountdown, 1000);
-
 const startingTime = 2;
 let time = startingTime * 60;
 
@@ -77,12 +75,14 @@ updateCountdown = () => {
   time--;
 }
   
+setInterval(updateCountdown, 1000);
 
 getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
 
-    return window.location.assign("/end.html");
+    //return window.location.href("end.html");
+  return location.href = "end.html";
   }
 
   questionCounter++;
