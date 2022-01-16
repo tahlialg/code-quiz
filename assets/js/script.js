@@ -3,6 +3,7 @@ const choices = Array.from(document.querySelectorAll(".choice-text"));
 const progressText = document.querySelector("#progressText");
 const scoreText = document.querySelector("#score");
 const progressBarFull = document.querySelector("#progressBarFull");
+const countdown = document.querySelector("#countdown");
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -62,6 +63,20 @@ startGame = () => {
   availableQuestions = [...questions];
   getNewQuestion();
 };
+
+setInterval(updateCountdown, 1000);
+
+const startingTime = 2;
+let time = startingTime * 60;
+
+updateCountdown = () => {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  countdown.innerHTML = `${minutes}: ${seconds}`;
+  time--;
+}
+  
 
 getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
